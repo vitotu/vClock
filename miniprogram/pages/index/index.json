@@ -1,0 +1,9 @@
+{
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#000",
+    "navigationBarTitleText": "vClock",
+    "navigationBarTextStyle": "white"
+  },
+  "pageOrientation": "auto"
+}

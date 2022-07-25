@@ -1,0 +1,8 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
