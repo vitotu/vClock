@@ -17,5 +17,8 @@ Page({
         date: moment().format(formatConfig.timeFormat.zhYMD),
       })
     }, 100)
+  },
+  handleTimeTap(event:any){
+    console.log(event)
   }
 })

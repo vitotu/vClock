@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view class="clock">
   <view class="date">{{date}}</view>
-  <view class="time">{{timeClock}}</view>
+  <view class="time" bindtap="handleTimeTap">{{timeClock}}</view>
 </view>
 

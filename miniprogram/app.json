@@ -1,8 +1,13 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/logs/logs"
+    "pages/index/index"
   ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#000",
+    "navigationBarTitleText": "vClock",
+    "navigationBarTextStyle": "white"
+  },
   "style": "v2",
   "sitemapLocation": "sitemap.json"
 }
