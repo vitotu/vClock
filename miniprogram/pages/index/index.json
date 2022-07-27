@@ -1,3 +1,6 @@
 {
-  "pageOrientation": "auto"
+  "pageOrientation": "auto",
+  "usingComponents":{
+    "Menu":"/components/menu/menu"
+  }
 }

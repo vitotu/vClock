@@ -19,6 +19,20 @@ Page({
     }, 100)
   },
   handleTimeTap(event:any){
-    console.log(event)
+    this.selectComponent('#menu').setData({
+      visiable: true
+    })
+  },
+  onShareAppMessage(options){
+    console.log(options);
+    return {
+      title:"全屏专注时钟",
+      path:"/pages/index/index"
+    }
+  },
+  onShareTimeline(){
+    return {
+      title:'全屏专注时钟'
+    }
   }
 })
