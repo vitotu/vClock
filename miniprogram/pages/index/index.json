@@ -1,6 +1,6 @@
 {
   "pageOrientation": "auto",
   "usingComponents":{
-    "Menu":"/components/menu/menu"
+    "clock-menu":"/components/menu/menu"
   }
 }

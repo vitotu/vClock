@@ -7,7 +7,8 @@ const app = getApp<IAppOption>()
 Page({
   data: {
     timeClock: moment().format('HH:mm:ss.SS'),
-    date: moment().format('YYYY-MM-DD')
+    date: moment().format('YYYY-MM-DD'),
+    menuHide:true,
   },
   // 事件处理函数
   onLoad() {
@@ -16,11 +17,11 @@ Page({
         timeClock: moment().format(formatConfig.timeFormat.zhTime),
         date: moment().format(formatConfig.timeFormat.zhYMD),
       })
-    }, 100)
+    }, 63)
   },
   handleTimeTap(event:any){
-    this.selectComponent('#menu').setData({
-      visiable: true
+    this.setData({
+      menuHide: false 
     })
   },
   onShareAppMessage(options){

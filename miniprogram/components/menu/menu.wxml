@@ -1,4 +1,5 @@
 <!--components/menu/menu.wxml-->
-<page-container show="{{visiable}}" position="right">
-  <view>menu</view>
-</page-container>
+<view class="menu" hidden="{{hideMenu}}" bindtap="onHide">
+menu
+</view>
+
