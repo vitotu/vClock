@@ -1,6 +1,13 @@
 <!--index.wxml-->
 <view class="clock">
-  <view class="date">{{date}}</view>
-  <view class="time" bindtap="handleTimeTap">{{timeClock}}</view>
+  <view class="top">
+    <text class="date">{{date}}</text>
+  </view>
+  <view class="center" bindtap="handleTimeTap">
+    <text class="time">{{timeClock}}</text>
+  </view>
+  <view class="bottom">
+    <text class="focus">已专注时长:{{countTime}}</text>
+  </view>
 </view>
 
