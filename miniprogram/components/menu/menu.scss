@@ -1,7 +1,24 @@
 /* components/menu/menu.wxss */
 .menu {
-  color: white;
+  color: black;
+  background-color: white;
   position: absolute;
   bottom: 0rpx;
   right:0rpx;
+  width: 100%;
+  border-top: 5rpx;
+  margin-bottom: -50rpx;
+  overflow: hidden;
+  .fast-menu {
+    display: flex;
+    flex-direction: row;
+    button {
+      border-radius: 10rpx;
+      border: 1rpx solid black;
+    }
+  }
+  .dragable-handle {
+    height: 20rpx;
+    background-color: red;
+  }
 }

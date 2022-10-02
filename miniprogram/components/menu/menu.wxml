@@ -1,5 +1,16 @@
 <!--components/menu/menu.wxml-->
-<view class="menu" hidden="{{hideMenu}}" bindtap="onHide">
-menu
+<view class="menu"
+  hidden="{{hideMenu}}"
+  bindtouchstart="handleTouchStart"
+  bindtouchmove="handleTouchMove"
+  style="transfrom:{{menuTransfrom}};translate:{{menuTransition}};"
+  >
+  <view class="dragable-handle"></view>
+  <view class="fast-menu">
+    <button wx:for="{{fastMenu}}">{{item.name}}</button>
+  </view>
+  <view class="menu-details">
+    <view>用户信息</view>
+  </view>
 </view>
 

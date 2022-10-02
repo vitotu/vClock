@@ -42,7 +42,7 @@ Page({
   },
   handleTimeTap(event:any){
     this.setData({
-      menuHide: false 
+      menuHide: !this.data.menuHide
     })
   },
   onShareAppMessage(options:any){
