@@ -1,5 +1,4 @@
-/* components/menu/menu.wxss */
-.menu {
+.demo {
   color: black;
   background-color: white;
   position: absolute;
@@ -9,7 +8,7 @@
   border-top: 5rpx;
   margin-bottom: -50rpx;
   overflow: hidden;
-  .fast-menu {
+  .fast-demo-content {
     display: flex;
     flex-direction: row;
     button {
@@ -17,23 +16,12 @@
       border: 1rpx solid black;
     }
   }
-  .dragable-handle {
+  .dragable-demo {
     height: 20rpx;
     background-color: red;
   }
 }
-.user-info {
-  height: 180rpx;
-  display: flex;
-  align-items: center;
-  image {
-    width: 130rpx;
-    height: 130rpx;
-    border: 5rpx solid #fff;
-    border-radius: 50%;
-  }
-  text {
-    font-size: 24;
-    margin-left: 20rpx;
-  }
+.dev-page {
+  width: 100%;
+  height: 100%;
 }

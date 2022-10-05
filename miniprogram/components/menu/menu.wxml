@@ -3,14 +3,20 @@
   hidden="{{hideMenu}}"
   bindtouchstart="handleTouchStart"
   bindtouchmove="handleTouchMove"
-  style="transfrom:{{menuTransfrom}};translate:{{menuTransition}};"
+  style="bottom:{{menuBottom}}rpx;"
   >
   <view class="dragable-handle"></view>
   <view class="fast-menu">
-    <button wx:for="{{fastMenu}}">{{item.name}}</button>
+    <button wx:for="{{fastMenu}}" wx:key="path">{{item.name}}</button>
   </view>
   <view class="menu-details">
-    <view>用户信息</view>
+    <view class="user-info">
+      <image class="avator" src="{{userInfo.avatarUrl?userInfo.avatarUrl:'/static/imgs/personal/missing-face.png'}}" />
+      <text class="username">{{userInfo.nickname?userInfo.nickname: '请登录'}}</text>
+    </view>
+    <view>设置</view>
+    <view>关于</view>
+    <!-- <view>排行</view> -->
   </view>
 </view>
 

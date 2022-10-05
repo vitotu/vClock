@@ -7,7 +7,7 @@
     <text class="time">{{timeClock}}</text>
   </view>
   <view class="bottom">
-    <text class="focus">您已专注:{{countTime}}</text>
+    <text class="focus" bindtap="handleFocusTap">您已专注:{{countTime}}</text>
   </view>
 </view>
 <clock-menu wx:if="{{menuHide}}"></clock-menu>

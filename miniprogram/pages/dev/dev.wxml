@@ -1,0 +1,15 @@
+<view class="dev-page">
+  <view class="demo"
+    bindtouchstart="handleTouchStart"
+    bindtouchmove="handleTouchMove"
+    style="transfrom:{{menuTransfrom}};translate:{{menuTransition}};"
+    >
+    <view class="dragable-demo"></view>
+    <view class="fast-demo-content">
+      <button wx:for="{{fastMenu}}">{{item.name}}</button>
+    </view>
+    <view class="demo-details">
+      <view>用户信息</view>
+    </view>
+  </view>
+</view>

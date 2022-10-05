@@ -45,6 +45,9 @@ Page({
       menuHide: !this.data.menuHide
     })
   },
+  handleFocusTap(event:any){
+    wx.navigateTo({url:'/pages/dev/dev'});
+  },
   onShareAppMessage(options:any){
     console.log(options);
     return {
