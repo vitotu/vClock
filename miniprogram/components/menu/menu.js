@@ -1,4 +1,5 @@
 let startY = 0, moveY = 0, moveDistance = 0;
+const menuMinHeight = 145, menuMaxHeight = 620;
 Component({
   /**
    * 组件的属性列表
@@ -12,15 +13,17 @@ Component({
    */
   data: {
     fastMenu:[
-      {name:'时钟', path:'index01', },
-      {name:'番茄时钟', path:'index02', },
-      {name:'待办事项', path:'index03', },
+      {name:'时钟', path:'index01', icon:'/static/imgs/fastMenu/clock.svg'},
+      {name:'番茄时钟', path:'index02', icon:'/static/imgs/fastMenu/timer.svg' },
+      {name:'待办事项', path:'index03', icon:'/static/imgs/fastMenu/todo-list.svg' },
+      {name:'更多', path:'index04', icon:'/static/imgs/fastMenu/more.svg' },
     ],
-    menuBottom: 0,
+    menuTop: menuMaxHeight, // menuMinHeight
     menuTransition: 'transform 1s linear',
     userInfo:{},
   },
-
+  created() {
+  },
   /**
    * 组件的方法列表
    */
@@ -31,19 +34,31 @@ Component({
     handleTouchStart(event){
       // this.setData({menuTransition: ''});
       startY = event.touches[0].clientY;
-      // 缓存原有的bottom值
-      this.oldMenuBottom = this.data.menuBottom;
+      // 缓存原有的top值
+      this.oldMenuTop = this.data.menuTop;
     },
     handleTouchMove(event){
       moveY = event.touches[0].clientY;
       moveDistance =  startY - moveY;
-      moveDistance += this.oldMenuBottom; // 基于原有的bottom值上进行偏移更新
-      // moveDistance = this.data.menuBottom + moveDistance;
-      if(moveDistance < 0 || moveDistance > 500) return;
-      this.setData({menuBottom:moveDistance});
+      let newMenuTop = this.oldMenuTop + moveDistance; // 基于原有的bottom值上进行偏移更新
+      // moveDistance = this.data.menuTop + moveDistance;
+      if(newMenuTop < menuMinHeight || newMenuTop > menuMaxHeight) return;
+      this.setData({menuTop:newMenuTop});
     },
     handleTouchEnd(){
-      this.oldMenuBottom = this.data.menuBottom;
+      this.oldMenuTop = this.data.menuTop;
+      if(moveDistance < 0 && this.data.menuTop < menuMaxHeight){
+        this.setData({menuTop:menuMinHeight})
+      } else if(moveDistance > 0 && this.data.menuTop > menuMinHeight) {
+        this.setData({menuTop:menuMaxHeight})
+      }
+    },
+    showDev(event){
+      wx.showToast({
+        title:`${event?.currentTarget?.dataset?.name}功能开发中`,
+        duration:1000,
+        icon:'none'
+      })
     }
   }
 })

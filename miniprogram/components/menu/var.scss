@@ -1,0 +1,9 @@
+$fast-image-height:70;
+$fast-name-height:40;
+$draggable-height:12;
+
+:export {
+  imageHeight:$fast-image-height;
+  nameHeight:$fast-image-height;
+  draggableHeight:$draggable-height;
+}

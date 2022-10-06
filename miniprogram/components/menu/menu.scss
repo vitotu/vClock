@@ -1,9 +1,11 @@
 /* components/menu/menu.wxss */
+@use './var.scss' as *;
+
 .menu {
   color: black;
-  background-color: white;
+  background-color: rgba($color: #fff, $alpha: 0.8);
   position: absolute;
-  bottom: 0rpx;
+  top: calc(100% - 150rpx);
   right:0rpx;
   width: 100%;
   border-top: 5rpx;
@@ -12,28 +14,66 @@
   .fast-menu {
     display: flex;
     flex-direction: row;
-    button {
-      border-radius: 10rpx;
+    text-align: center;
+    overflow-x: auto;
+    justify-content: space-around;
+    margin: 2rpx;
+    image {
+      width: $fast-image-height + rpx;
+      height: $fast-image-height + rpx;
+      line-height: 0;
+    }
+    .menu-item-name {
+      width: 140rpx;
+      height: $fast-name-height + rpx;
+      line-height: 1;
+      font-size: 28rpx;
+    }
+    &>view {
       border: 1rpx solid black;
+      border-radius: 20rpx;
     }
   }
-  .dragable-handle {
-    height: 20rpx;
-    background-color: red;
+  .draggable-handle {
+    height: $draggable-height + rpx;
+    width: 200rpx;
+    text-align: center;
+    position: relative;
+    margin: 5rpx auto;
+    background-color: gray;
+    border-radius: 10rpx;
+  }
+}
+.menu-details {
+  &>view:not(.user-info) {
+    height: 80rpx;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    border-top: 1rpx solid black;
+    font-size: 28rpx;
+    margin-bottom: 2rpx;
+    image {
+      width: 80rpx;
+      height: 80rpx;
+      line-height: 0;
+    }
+    view { margin-left: 8rpx;}
   }
 }
 .user-info {
-  height: 180rpx;
   display: flex;
   align-items: center;
-  image {
-    width: 130rpx;
-    height: 130rpx;
+  margin: 8rpx 2rpx;
+  .avator {
+    width: 120rpx;
+    height: 120rpx;
     border: 5rpx solid #fff;
     border-radius: 50%;
+    line-height: 0;
   }
-  text {
-    font-size: 24;
+  .username {
+    font-size: 32rpx;
     margin-left: 20rpx;
   }
 }

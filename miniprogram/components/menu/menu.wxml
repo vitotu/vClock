@@ -3,19 +3,40 @@
   hidden="{{hideMenu}}"
   bindtouchstart="handleTouchStart"
   bindtouchmove="handleTouchMove"
-  style="bottom:{{menuBottom}}rpx;"
+  bindtouchend="handleTouchEnd"
+  style="top:calc(100% - {{menuTop}}rpx);"
   >
-  <view class="dragable-handle"></view>
+  <view class="draggable-handle"></view>
   <view class="fast-menu">
-    <button wx:for="{{fastMenu}}" wx:key="path">{{item.name}}</button>
+    <view wx:for="{{fastMenu}}" wx:key="path" bindtap="showDev" wx:for-item="item" data-name="{{item.name}}">
+      <image src="{{item.icon}}"></image>
+      <view class="menu-item-name">{{item.name}}</view>
+    </view>
   </view>
   <view class="menu-details">
-    <view class="user-info">
-      <image class="avator" src="{{userInfo.avatarUrl?userInfo.avatarUrl:'/static/imgs/personal/missing-face.png'}}" />
-      <text class="username">{{userInfo.nickname?userInfo.nickname: '请登录'}}</text>
+    <view class="user-info" bindtap="showDev" data-name="登录/个人中心">
+      <open-data class="avator" type="userAvatarUrl"></open-data>
+      <open-data class="username" type="userNickName" default-text="请登录"></open-data>
+
     </view>
-    <view>设置</view>
-    <view>关于</view>
+    <view class="order" bindtap="showDev" data-name="排行榜">
+      <image src='/static/imgs/menu/order.svg'></image>
+      <view>排行榜</view>
+    </view>
+    <view class="settings" bindtap="showDev" data-name="设置">
+      <image src='/static/imgs/menu/settings.svg'></image>
+      <view>设置</view>
+    </view>
+    <view class="feedback" bindtap="showDev" data-name="反馈">
+      <image src='/static/imgs/menu/feedback.svg'></image>
+      <view>反馈</view>
+    </view>
+    <view class="about" bindtap="showDev" data-name="关于">
+      <image src='/static/imgs/menu/about.svg'></image>
+      <view>关于</view>
+    </view>
+    <!-- placeholder -->
+    <view></view>
     <!-- <view>排行</view> -->
   </view>
 </view>
