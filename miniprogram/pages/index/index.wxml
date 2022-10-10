@@ -1,15 +1,26 @@
 <!--index.wxml-->
 <view class="clock">
   <view class="top">
-    <text class="date">{{date}}</text>
+    <view class="date">
+      {{date}}
+      <view wx:if="{{mode != 'clock'}}">{{timeClock}}</view>
+    </view>
   </view>
   <view class="center" bindtap="handleTimeTap">
-    <text class="time">{{timeClock}}</text>
+    <view class="time">{{mode != 'clock' ? timeLeft : timeClock}}</view>
   </view>
   <view class="bottom">
-    <text class="focus" bindtap="handleFocusTap">您已专注:{{countTime}}</text>
+    <view class="focus" wx:if="{{mode==='clock'}}">您已专注:{{countTime}}</view>
+    <view class="todo-panel" wx:if="{{mode==='todo'}}">
+      <switch type="checkbox" checked="{{baseConfig.autoTimer}}" bindchange="autoTimerChange">
+        {{baseConfig.autoTimer ? '关闭连续计时':'开启连续计时'}}
+      </switch>
+      <input type="text" placeholder="自定义任务名" placeholder-class="place-holder" bindinput="changeLogName"/>
+      <button type="primary" bindtap="handleTodoStatusChange">{{todoStatusLabel}}</button>
+      <button bindtap="handleTodoStop">结束</button>
+    </view>
   </view>
 </view>
-<clock-menu wx:if="{{menuHide}}"></clock-menu>
+<clock-menu wx:if="{{menuHide}}" bind:modechange="onModeChange"></clock-menu>
 
 

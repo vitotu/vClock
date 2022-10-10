@@ -34,3 +34,13 @@ page {
     font-size:15vw;
   }
 }
+.todo-panel {
+  input {
+    border: 2rpx solid white;
+    border-radius: 20rpx;
+    height: 80rpx;
+    .place-holder {
+      color: white;
+    }
+  }
+}

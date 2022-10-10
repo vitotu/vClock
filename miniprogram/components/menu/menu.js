@@ -13,12 +13,12 @@ Component({
    */
   data: {
     fastMenu:[
-      {name:'时钟', path:'index01', icon:'/static/imgs/fastMenu/clock.svg'},
-      {name:'番茄时钟', path:'index02', icon:'/static/imgs/fastMenu/timer.svg' },
-      {name:'待办事项', path:'index03', icon:'/static/imgs/fastMenu/todo-list.svg' },
-      {name:'更多', path:'index04', icon:'/static/imgs/fastMenu/more.svg' },
+      {name:'专注时钟', path:'clock', icon:'/static/imgs/fastMenu/clock.svg', onTap:function(e){this.triggerEvent('modechange', 'clock')}},
+      {name:'番茄时钟', path:'todo', icon:'/static/imgs/fastMenu/timer.svg', onTap:function(e){this.triggerEvent('modechange', 'todo')} },
+      {name:'待办事项', path:'index03', icon:'/static/imgs/fastMenu/todo-list.svg', onTap:function(e){this.showDev(e);} },
+      {name:'更多', path:'index04', icon:'/static/imgs/fastMenu/more.svg' , onTap:function(e){console.log('trigger more')}},
     ],
-    menuTop: menuMaxHeight, // menuMinHeight
+    menuTop: menuMinHeight, // menuMinHeight
     menuTransition: 'transform 1s linear',
     userInfo:{},
   },
@@ -59,6 +59,14 @@ Component({
         duration:1000,
         icon:'none'
       })
+    },
+    onFastMenuTap(e){
+      const path = e.currentTarget.dataset.path;
+      if(path === 'clock') this.triggerEvent('modechange', 'clock');
+      else if (path === 'todo') this.triggerEvent('modechange', 'todo');
+      else {
+        this.showDev(e);
+      }
     }
   }
 })

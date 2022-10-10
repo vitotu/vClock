@@ -8,7 +8,7 @@
   >
   <view class="draggable-handle"></view>
   <view class="fast-menu">
-    <view wx:for="{{fastMenu}}" wx:key="path" bindtap="showDev" wx:for-item="item" data-name="{{item.name}}">
+    <view wx:for="{{fastMenu}}" wx:key="path"  wx:for-item="item" data-name="{{item.name}}" bindtap="onFastMenuTap" data-path="{{item.path}}">
       <image src="{{item.icon}}"></image>
       <view class="menu-item-name">{{item.name}}</view>
     </view>
