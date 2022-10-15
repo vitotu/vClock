@@ -1,8 +1,8 @@
 <!--index.wxml-->
 <view class="clock">
   <view class="top">
-    <view class="date">
-      {{date}}
+    <view class="date {{orientation ? 'vertical-date' : 'horizontal-date'}}">
+      <view>{{date}}</view>
       <view wx:if="{{mode != 'clock'}}">{{timeClock}}</view>
     </view>
   </view>
@@ -11,7 +11,7 @@
   </view>
   <view class="bottom">
     <view class="focus" wx:if="{{mode==='clock'}}">您已专注:{{countTime}}</view>
-    <view class="todo-panel" wx:if="{{mode==='todo'}}">
+    <view class="todo-panel {{orientation ? 'vertical-panel' : 'horizontal-panel'}}" wx:if="{{mode==='todo'}}">
       <switch type="checkbox" checked="{{baseConfig.autoTimer}}" bindchange="autoTimerChange">
         {{baseConfig.autoTimer ? '关闭连续计时':'开启连续计时'}}
       </switch>

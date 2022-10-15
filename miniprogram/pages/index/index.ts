@@ -15,10 +15,10 @@ Page({
   data: {
     timeClock: moment().format('HH:mm:ss.SS'),
     date: moment().format('YYYY-MM-DD'),
-    menuHide:true,
+    menuHide:false,
     countTime: moment('00:00').format('mm:ss'),
     _startTime: new Date().getTime(),
-    mode:'todo',
+    mode:'todo', // 默认为专注时钟'clock'
     timeLeft:moment.utc(formatConfig.constant.todoTime).format('mm:ss'),
     baseConfig:{
       autoTimer:true
@@ -30,6 +30,7 @@ Page({
       startTime:moment(),
       endTime: undefined,
     },
+    orientation: false, // 默认为垂直布局true
   },
   timeLeftCache:formatConfig.constant.todoTime,
   // 事件处理函数
@@ -41,6 +42,15 @@ Page({
   onShow(){
     if(!this.timer){
       this.startTimer();
+    }
+  },
+  onResize(res:any){
+    console.log(res.size.windowHeight);
+    console.log(res.size.windowWidth);
+    if(res.size.windowHeight > res.size.windowWidth){
+      this.setData({orientation:true});
+    } else {
+      this.setData({orientation:false});
     }
   },
   startTimer(){
