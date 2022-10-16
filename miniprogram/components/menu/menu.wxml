@@ -1,10 +1,10 @@
 <!--components/menu/menu.wxml-->
-<view class="menu"
+<view class="menu {{orientation ? 'vertical-menu' : 'horizontal-menu'}}"
   hidden="{{hideMenu}}"
   bindtouchstart="handleTouchStart"
   bindtouchmove="handleTouchMove"
   bindtouchend="handleTouchEnd"
-  style="top:calc(100% - {{menuTop}}rpx);"
+  style="{{orientation ? 'top' : 'left'}}:calc(100% - {{menuTop}}rpx);"
   >
   <view class="draggable-handle"></view>
   <view class="fast-menu">

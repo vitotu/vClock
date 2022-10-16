@@ -21,6 +21,6 @@
     </view>
   </view>
 </view>
-<clock-menu wx:if="{{menuHide}}" bind:modechange="onModeChange"></clock-menu>
+<clock-menu wx:if="{{menuHide}}" bind:modechange="onModeChange" orientation="{{orientation}}"></clock-menu>
 
 

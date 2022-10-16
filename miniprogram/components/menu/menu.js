@@ -1,13 +1,26 @@
 let startY = 0, moveY = 0, moveDistance = 0;
 const menuMinHeight = 145, menuMaxHeight = 620;
+const menuMinWidth = 110, menuMaxWidth = 330;
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-    hideMenu:Boolean
+    hideMenu:Boolean,
+    orientation:Boolean
   },
-
+  observers:{
+    'orientation':function(){
+      if(this.data.orientation){
+        this.minDistance = menuMinHeight;
+        this.maxDistance = menuMaxHeight;
+      }else {
+        this.minDistance = menuMinWidth;
+        this.maxDistance = menuMaxWidth;
+      }
+      this.setData({menuTop:this.minDistance});
+    }
+  },
   /**
    * 组件的初始数据
    */
@@ -22,7 +35,14 @@ Component({
     menuTransition: 'transform 1s linear',
     userInfo:{},
   },
-  created() {
+  attached() {
+    this.minDistance = menuMinHeight;
+    this.maxDistance = menuMaxHeight;
+    if(!this.data.orientation) {
+      this.minDistance = menuMinWidth;
+      this.maxDistance = menuMaxWidth;
+      this.setData({menuTop:menuMinWidth});
+    }
   },
   /**
    * 组件的方法列表
@@ -33,24 +53,24 @@ Component({
     },
     handleTouchStart(event){
       // this.setData({menuTransition: ''});
-      startY = event.touches[0].clientY;
+      startY = this.data.orientation ? event.touches[0].clientY : event.touches[0].clientX;
       // 缓存原有的top值
       this.oldMenuTop = this.data.menuTop;
     },
     handleTouchMove(event){
-      moveY = event.touches[0].clientY;
+      moveY = this.data.orientation ? event.touches[0].clientY : event.touches[0].clientX;
       moveDistance =  startY - moveY;
       let newMenuTop = this.oldMenuTop + moveDistance; // 基于原有的bottom值上进行偏移更新
       // moveDistance = this.data.menuTop + moveDistance;
-      if(newMenuTop < menuMinHeight || newMenuTop > menuMaxHeight) return;
+      if(newMenuTop < this.minDistance || newMenuTop > this.maxDistance) return;
       this.setData({menuTop:newMenuTop});
     },
     handleTouchEnd(){
       this.oldMenuTop = this.data.menuTop;
-      if(moveDistance < 0 && this.data.menuTop < menuMaxHeight){
-        this.setData({menuTop:menuMinHeight})
-      } else if(moveDistance > 0 && this.data.menuTop > menuMinHeight) {
-        this.setData({menuTop:menuMaxHeight})
+      if(moveDistance < 0 && this.data.menuTop < this.maxDistance){
+        this.setData({menuTop:this.minDistance})
+      } else if(moveDistance > 0 && this.data.menuTop > this.minDistance) {
+        this.setData({menuTop:this.maxDistance})
       }
     },
     showDev(event){

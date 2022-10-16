@@ -5,19 +5,66 @@
   color: black;
   background-color: rgba($color: #fff, $alpha: 0.8);
   position: absolute;
+  border-top: 5rpx;
+  overflow: hidden;
+  .fast-menu {
+    text-align: center;
+    justify-content: space-around;
+    margin: 2rpx;
+    &>view {
+      border: 1rpx solid black;
+      border-radius: 20rpx;
+    }
+  }
+  .draggable-handle {
+    text-align: center;
+    position: relative;
+    background-color: gray;
+    border-radius: 10rpx;
+  }
+  .user-info {
+    display: flex;
+    align-items: center;
+    margin: 8rpx 2rpx;
+    .avator {
+      width: 120rpx;
+      aspect-ratio: 1/1;
+      border: 5rpx solid #fff;
+      border-radius: 50%;
+      line-height: 0;
+    }
+    .username {
+      font-size: 32rpx;
+      margin-left: 20rpx;
+    }
+  }
+  .menu-details {
+    &>view:not(.user-info) {
+      height: 80rpx;
+      display: flex;
+      text-align: center;
+      align-items: center;
+      border-top: 1rpx solid black;
+      font-size: 28rpx;
+      margin-bottom: 2rpx;
+      image {
+        width: 80rpx;
+        aspect-ratio: 1/1;
+        line-height: 0;
+      }
+      view { margin-left: 8rpx;}
+    }
+  }
+}
+.vertical-menu {
   top: calc(100% - 150rpx);
   right:0rpx;
   width: 100%;
-  border-top: 5rpx;
   margin-bottom: -50rpx;
-  overflow: hidden;
   .fast-menu {
     display: flex;
     flex-direction: row;
-    text-align: center;
     overflow-x: auto;
-    justify-content: space-around;
-    margin: 2rpx;
     image {
       width: $fast-image-height + rpx;
       height: $fast-image-height + rpx;
@@ -29,51 +76,48 @@
       line-height: 1;
       font-size: 28rpx;
     }
-    &>view {
-      border: 1rpx solid black;
-      border-radius: 20rpx;
-    }
   }
   .draggable-handle {
     height: $draggable-height + rpx;
     width: 200rpx;
-    text-align: center;
-    position: relative;
     margin: 5rpx auto;
-    background-color: gray;
-    border-radius: 10rpx;
   }
+
+
 }
-.menu-details {
-  &>view:not(.user-info) {
-    height: 80rpx;
-    display: flex;
-    text-align: center;
-    align-items: center;
-    border-top: 1rpx solid black;
-    font-size: 28rpx;
-    margin-bottom: 2rpx;
-    image {
-      width: 80rpx;
-      height: 80rpx;
-      line-height: 0;
-    }
-    view { margin-left: 8rpx;}
-  }
-}
-.user-info {
+.horizontal-menu {
+  bottom: 0rpx;
+  height: 100%;
   display: flex;
-  align-items: center;
-  margin: 8rpx 2rpx;
-  .avator {
-    width: 120rpx;
-    height: 120rpx;
-    border: 5rpx solid #fff;
-    border-radius: 50%;
-    line-height: 0;
+  flex-direction: row;
+  .fast-menu {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    &>view {
+      height: 24%;
+      aspect-ratio: 1/1;
+      .menu-item-name { height: 30%;}
+      image { height: 60%; width: 60%;}
+    }
   }
-  .username {
-    font-size: 32rpx;
-    margin-left: 20rpx;
+  .draggable-handle {
+    width: 6px;
+    height: 200rpx;
+    margin: auto 5rpx;
+  }
+  .menu-details{
+    .user-info {
+      .avator {
+        width: 60rpx;
+      }
+      .username { font-size: inherit; margin-left: 10rpx;}
+    }
+    &>view:not(.user-info) {
+      height: 60rpx;
+      font-size: inherit;
+      width: 250rpx;
+      image { width: 60rpx;}
+    }
   }
 }
