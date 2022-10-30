@@ -15,6 +15,11 @@
       border: 1rpx solid black;
       border-radius: 20rpx;
     }
+    image {
+      width: $fast-image-height + rpx;
+      height: $fast-image-height + rpx;
+      line-height: 0;
+    }
   }
   .draggable-handle {
     text-align: center;
@@ -65,11 +70,7 @@
     display: flex;
     flex-direction: row;
     overflow-x: auto;
-    image {
-      width: $fast-image-height + rpx;
-      height: $fast-image-height + rpx;
-      line-height: 0;
-    }
+
     .menu-item-name {
       width: 140rpx;
       height: $fast-name-height + rpx;
@@ -91,20 +92,22 @@
   display: flex;
   flex-direction: row;
   .fast-menu {
+    flex:none;
     display: flex;
     flex-direction: column;
+    height: 100%;
     overflow-y: auto;
     &>view {
-      height: 24%;
       aspect-ratio: 1/1;
-      .menu-item-name { height: 30%;}
-      image { height: 60%; width: 60%;}
+      flex: 0 1 auto;
+      // .menu-item-name { height: 30%;}
     }
   }
   .draggable-handle {
     width: 6px;
     height: 200rpx;
     margin: auto 5rpx;
+    flex: none;
   }
   .menu-details{
     .user-info {
