@@ -1,4 +1,5 @@
 let startY = 0, moveY = 0, moveDistance = 0;
+// TODO:重构横向布局
 const menuMinHeight = 145, menuMaxHeight = 620;
 const menuMinWidth = 110, menuMaxWidth = 330;
 Component({
