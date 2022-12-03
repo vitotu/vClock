@@ -1,5 +1,6 @@
 // index.ts
 // 获取应用实例
+// @ts-nocheck
 import moment from 'moment';
 import formatConfig  from '../../config/index'
 const app = getApp<IAppOption>()
@@ -38,6 +39,10 @@ Page({
     if(!this.timer){
       this.startTimer();
     }
+    let curOrient = wx.getSystemInfoSync().windowHeight > wx.getSystemInfoSync().windowWidth ? true : false
+    this.setData({
+      orientation:curOrient 
+    })
   },
   onShow(){
     if(!this.timer){

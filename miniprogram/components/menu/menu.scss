@@ -100,6 +100,11 @@
     &>view {
       aspect-ratio: 1/1;
       flex: 0 1 auto;
+      height: 24%;
+      image {
+        height: 65%;
+        aspect-ratio: 1/1;
+      }
       // .menu-item-name { height: 30%;}
     }
   }

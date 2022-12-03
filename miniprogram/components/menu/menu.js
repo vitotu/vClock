@@ -15,11 +15,15 @@ Component({
       if(this.data.orientation){
         this.minDistance = menuMinHeight;
         this.maxDistance = menuMaxHeight;
+        this.setData({menuTop:this.minDistance});
       }else {
-        this.minDistance = menuMinWidth;
-        this.maxDistance = menuMaxWidth;
+        this.createSelectorQuery().select('.fast-menu').boundingClientRect( res => {
+          this.minDistance = (res.width + 20) * 750 / wx.getSystemInfoSync().windowWidth;
+          this.maxDistance = menuMaxWidth;
+          this.setData({menuTop:this.minDistance});
+          console.log(this.minDistance);
+        }).exec();
       }
-      this.setData({menuTop:this.minDistance});
     }
   },
   /**
