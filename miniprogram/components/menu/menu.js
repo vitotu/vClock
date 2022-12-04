@@ -18,10 +18,10 @@ Component({
         this.setData({menuTop:this.minDistance});
       }else {
         this.createSelectorQuery().select('.fast-menu').boundingClientRect( res => {
+          console.log(res.width);
           this.minDistance = (res.width + 20) * 750 / wx.getSystemInfoSync().windowWidth;
           this.maxDistance = menuMaxWidth;
           this.setData({menuTop:this.minDistance});
-          console.log(this.minDistance);
         }).exec();
       }
     }
