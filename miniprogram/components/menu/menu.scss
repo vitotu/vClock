@@ -16,8 +16,8 @@
       border-radius: 20rpx;
     }
     image {
-      width: $fast-image-height + rpx;
-      height: $fast-image-height + rpx;
+      width: $fast-image-height + px;
+      height: $fast-image-height + px;
       line-height: 0;
     }
   }
@@ -70,7 +70,9 @@
     display: flex;
     flex-direction: row;
     overflow-x: auto;
-
+    &>view {
+      width: 20%;
+    }
     .menu-item-name {
       width: 140rpx;
       height: $fast-name-height + rpx;
@@ -100,11 +102,8 @@
     &>view {
       aspect-ratio: 1/1;
       flex: 0 1 auto;
-      height: 24%;
-      image {
-        height: 65%;
-        aspect-ratio: 1/1;
-      }
+      height: 20%;
+
       // .menu-item-name { height: 30%;}
     }
   }

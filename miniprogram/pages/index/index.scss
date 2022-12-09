@@ -54,8 +54,9 @@ page {
   align-items: center;
   input, button {
     flex: 0 1 auto;
-    height: 50rpx;
+    // height: 50rpx;
   }
+  input { padding: 8px 0;}
   switch {
     flex-basis: 200rpx;
     text-align: center;

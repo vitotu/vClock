@@ -15,15 +15,13 @@ Component({
       if(this.data.orientation){
         this.minDistance = menuMinHeight;
         this.maxDistance = menuMaxHeight;
-        this.setData({menuTop:this.minDistance});
       }else {
-        this.createSelectorQuery().select('.fast-menu').boundingClientRect( res => {
-          console.log(res.width);
-          this.minDistance = (res.width + 20) * 750 / wx.getSystemInfoSync().windowWidth;
-          this.maxDistance = menuMaxWidth;
-          this.setData({menuTop:this.minDistance});
-        }).exec();
+        let height = wx.getSystemInfoSync().windowHeight
+
+        this.minDistance = (height / 5 + 25) * 750 / wx.getSystemInfoSync().windowWidth;
+        this.maxDistance = menuMaxWidth;
       }
+      this.setData({menuTop:this.minDistance});
     }
   },
   /**
@@ -44,10 +42,11 @@ Component({
     this.minDistance = menuMinHeight;
     this.maxDistance = menuMaxHeight;
     if(!this.data.orientation) {
-      this.minDistance = menuMinWidth;
+      this.minDistance = (wx.getSystemInfoSync().windowHeight / 5 + 25) * 750 / wx.getSystemInfoSync().windowWidth;;
       this.maxDistance = menuMaxWidth;
       this.setData({menuTop:menuMinWidth});
     }
+    console.log(this.minDistance);
   },
   /**
    * 组件的方法列表
